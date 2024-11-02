@@ -1,5 +1,3 @@
-<img width="1280" alt="readme-banner" src="https://github.com/user-attachments/assets/35332e92-44cb-425b-9dff-27bcf1023c6c">
-
 Self-Destructive To-Do List 📝💥
 Basic Details
 Team Name: ELIXIR
@@ -7,7 +5,6 @@ Team Members
 Team Lead: Ahmed Sultan P - CUSAT
 Member 2: Minhaj Ali P - CUSAT
 Member 3: GS Navajith - CUSAT
-
 Project Description
 A to-do list that constantly sabotages your productivity by "self-destructing" tasks randomly, just when you’re about to finish them! Perfect for procrastinators and the perpetually stressed.
 
@@ -24,7 +21,7 @@ For Software:
 Languages used: JavaScript, HTML, Google Apps Script
 Frameworks used: Google Apps Script framework
 Libraries used: None
-Tools used: Google Apps Script IDE
+Tools used: Google Sheets, Google Apps Script IDE
 For Hardware:
 
 Main Components: None required; this is a purely web-based tool.
@@ -38,20 +35,15 @@ bash
 Copy code
 # No installation needed; this project is hosted on Google Apps Script.
 Run
-open this link: 
-If you want to create yourself,
 Open Google Apps Script and create a new project.
 Copy the code provided into the script editor.
 Save and deploy as a web app.
 Authorize permissions and open the link to see your self-destructive to-do list in action!
+Project Documentation
+For Software:
 
+Any Web Browser
 For Hardware:
+
 Not applicable; this is a purely web-based project.
-
-
-
-Made with ❤️ at TinkerHub Useless Projects
-
-
-
 
