@@ -1,101 +1,57 @@
 <img width="1280" alt="readme-banner" src="https://github.com/user-attachments/assets/35332e92-44cb-425b-9dff-27bcf1023c6c">
 
-# [Project Name] 🎯
+Self-Destructive To-Do List 📝💥
+Basic Details
+Team Name: ELIXIR
+Team Members
+Team Lead: Ahmed Sultan P - CUSAT
+Member 2: Minhaj Ali P - CUSAT
+Member 3: GS Navajith - CUSAT
 
+Project Description
+A to-do list that constantly sabotages your productivity by "self-destructing" tasks randomly, just when you’re about to finish them! Perfect for procrastinators and the perpetually stressed.
 
-## Basic Details
-### Team Name: [Name]
+The Problem (that doesn't exist)
+Too many people complete their tasks on time. We aim to prevent productivity overload by introducing a task management tool that ensures you’ll never get things done.
 
+The Solution (that nobody asked for)
+A self-destructive to-do list that randomly erases, resets, or marks tasks incomplete just when you think you’ve done it. Never feel the satisfaction of checking things off again!
 
-### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
-
-### Project Description
-[2-3 lines about what your project does]
-
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
-
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
-
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
+Technical Details
+Technologies/Components Used
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
+Languages used: JavaScript, HTML, Google Apps Script
+Frameworks used: Google Apps Script framework
+Libraries used: None
+Tools used: Google Apps Script IDE
 For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+Main Components: None required; this is a purely web-based tool.
+Specifications: Runs on any device with internet access and a Google account.
+Tools Required: Google Workspace (to access Apps Script and Google Sheets).
+Implementation
+For Software:
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+Installation
+bash
+Copy code
+# No installation needed; this project is hosted on Google Apps Script.
+Run
+open this link: 
+If you want to create yourself,
+Open Google Apps Script and create a new project.
+Copy the code provided into the script editor.
+Save and deploy as a web app.
+Authorize permissions and open the link to see your self-destructive to-do list in action!
 
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
+For Hardware:
+Not applicable; this is a purely web-based project.
 
-![Build](Add photos of build process here)
-*Explain the build steps*
 
-![Final](Add photo of final product here)
-*Explain the final build*
 
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+Made with ❤️ at TinkerHub Useless Projects
 
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
-
----
-Made with ❤️ at TinkerHub Useless Projects 
-
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProject--24-24?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
 
 
 
