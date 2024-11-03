@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self-Destructive To-Do List</title>
+    <title>To-Do List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,6 +27,48 @@
         .input-container {
             display: flex;
             margin-bottom: 20px;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px; /* Position from the bottom */
+            right: 20px; /* Position from the right */
+            background-color: #ff4444; /* New background color (green) */
+            color: white; /* Text color */
+            padding: 20px 30px; /* Increased padding */
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
+            z-index: 1000; /* Ensure it's on top of other elements */
+            animation: slideIn 0.5s ease-out; /* New animation for appearing */
+            text-align: center; /* Center text */
+            max-width: 350px; /* Increased max-width */
+            font-size: 18px; /* Increased font size */
+            font-family: Arial, sans-serif; /* Changed font */
+        }
+        .notificationleft {
+            position: fixed;
+            bottom: 20px; /* Position from the bottom */
+            left: 20px; /* Change from right to left */
+            background-color: #ff4444; /* Background color (red) */
+            color: white; /* Text color */
+            padding: 20px 30px; /* Increased padding */
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
+            z-index: 1000; /* Ensure it's on top of other elements */
+            animation: slideIn 0.5s ease-out; /* Animation for appearing */
+            text-align: center; /* Center text */
+            max-width: 350px; /* Increased max-width */
+            font-size: 18px; /* Increased font size */
+            font-family: Arial, sans-serif; /* Font family */
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%); /* Start from below */
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0); /* End at original position */
+                opacity: 1;
+            }
         }
         .task-input {
             flex-grow: 1;
@@ -52,6 +94,10 @@
             list-style-type: none;
             padding: 0;
         }
+        .task-text {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
         .task-item {
             display: flex;
             align-items: center;
@@ -68,6 +114,7 @@
             margin-right: 10px;
         }
         .task-text {
+            margin-right: 10px;
             flex-grow: 1;
         }
         .delete-button {
@@ -127,12 +174,42 @@
         }
 
         .delete-confirmation-message {
-            color: #ff0000 !important;
+            color: #ff4444 !important;
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 20px;
         }
+        .agree-button {
+            background-color: #4CAF50; /* Green background for "I agree" */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for buttons */
+            border: 1px solid black; /* Black border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin: 5px; /* Margin between buttons */
+            font-size: 16px; /* Font size for buttons */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
 
+        .no-button {
+            background-color: #f44336; /* Red background for "No" */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for buttons */
+            border: 1px solid black; /* Black border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin: 5px; /* Margin between buttons */
+            font-size: 16px; /* Font size for buttons */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .agree-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .no-button:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
         .close {
             color: #aaa;
             float: right;
@@ -167,13 +244,13 @@
         .task-item {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 15px;
             margin: 10px 0;
             border-radius: 8px;
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             transition: all 0.3s ease;
-            gap: 10px;
         }
 
         .task-item:hover {
@@ -197,21 +274,26 @@
             background-color: #007bff;
         }
         .priority-badge {
-            padding: 3px 8px;
+            padding: 4px 8px;
+            margin-right: 10px;
             border-radius: 12px;
             font-size: 12px;
-            margin-left: 10px;
+            font-weight: bold;
+            white-space: nowrap;
         }
+
         .priority-high {
-            background-color: #dc3545;
+            background-color: #ff4444;
             color: white;
         }
+
         .priority-normal {
-            background-color: #ffc107;
+            background-color: #ffbb33;
             color: black;
         }
+
         .priority-low {
-            background-color: #28a745;
+            background-color: #00C851;
             color: white;
         }
         .priority-select {
@@ -254,7 +336,6 @@
             flex-grow: 1;
             margin-right: 10px;
         }
-
         .task-actions {
             display: flex;
             gap: 5px;
@@ -455,9 +536,9 @@
     </style>
 </head>
 <body>
-    <div class="focus-mode-indicator">FOCUS MODE ON</div>
+    <div class="focus-mode-indicator">USELESS MODE ON</div>
     <div class="container">
-        <h1>Self-Destructive To-Do List</h1>
+        <h1>To-Do List</h1>
     <div class="input-container">
         <input type="text" id="task-input" class="task-input" placeholder="Enter your task here..." />
        <select id="priority-select" class="priority-select">
@@ -472,7 +553,7 @@
             <button class="filter-button" onclick="filterTasks('active')">Active</button>
             <button class="filter-button" onclick="filterTasks('completed')">Completed</button>
         </div>
-        <button class="button" id="focus-mode-button" onclick="toggleFocusMode()">Focus Mode On</button>
+        <button class="button" id="focus-mode-button" onclick="toggleFocusMode()">Useless Mode On</button>
         <ul class="task-list" id="task-list">
             <!-- Tasks will be displayed here -->
         </ul>
@@ -544,32 +625,83 @@
         "You're doing great... at avoiding your tasks!",
         "Procrastination is just productivity in disguise!"
     ];
+    const funnyProcrastinationQuestions = [
+        "Do you agree that procrastination is just your brain’s way of telling you to enjoy life a little more?",
+        "Isn't it true that every great idea starts with a good old-fashioned procrastination session?",
+        "Do you believe that the best things in life are found while avoiding work?",
+        "Isn't procrastination just a creative way to prioritize your Netflix queue?",
+        "Do you agree that the best time to work on something is always 'later'?",
+        "Is it a sign of wisdom if you choose to procrastinate instead of stressing out?",
+        "Do you think that procrastination is just a form of self-care in disguise?",
+        "Isn't it true that if you wait long enough, someone else will do the work for you?",
+        "Do you agree that procrastination is just a way to let your ideas marinate?",
+        "Isn't it wonderful how procrastination gives you more time to think about how awesome your work will be?",
+        "Do you agree that procrastination is just your brain’s way of telling you to enjoy life a little more?",
+        "Isn't it true that every great idea starts with a good old-fashioned procrastination session?",
+        "Do you believe that the best things in life are found while avoiding work?",
+        "Isn't procrastination just a creative way to prioritize your Netflix queue?",
+        "Do you agree that the best time to work on something is always 'later'?",
+        "Is it a sign of wisdom if you choose to procrastinate instead of stressing out?",
+        "Do you think that procrastination is just a form of self-care in disguise?",
+        "Isn't it true that if you wait long enough, someone else will do the work for you?",
+        "Do you agree that procrastination is just a way to let your ideas marinate?",
+        "Isn't it wonderful how procrastination gives you more time to think about how awesome your work will be?"
+    ];
+
+    function showQuestionPopup() {
+        const message = funnyProcrastinationQuestions[Math.floor(Math.random() * funnyProcrastinationQuestions.length)];
+        
+        const popup = document.createElement('div');
+        popup.className = 'taunting-popup';
+        popup.innerHTML = `
+            <p>${message}</p>
+            <button class="agree-button" onclick="handleAgree(this)">I agree</button>
+            <button class="no-button" onclick="handleNo(this)">No</button>
+        `;
+        document.body.appendChild(popup);
+    }
+
+    function handleAgree(button) {
+        // Get the popup element
+        const popup = button.parentElement;
+
+        // Update the popup content to display "I knew it"
+        popup.innerHTML = `<p>That's The Spirit</p>`;
+
+        // Optionally, you can add a timeout to remove the popup after a few seconds
+        setTimeout(() => {
+            document.body.removeChild(popup);
+        }, 2000); // Adjust the time (in milliseconds) as needed
+    }
+
+    function handleNo(button) {
+        // Remove the popup
+        const popup = button.parentElement;
+        document.body.removeChild(popup);
+        showQuestionPopup()
+    }
 
     function showProductivityPopup() {
-        if (!focusMode) return;
+        if (!focusMode) return; // Exit if not in focus mode
         
         const message = productivityMessages[Math.floor(Math.random() * productivityMessages.length)];
         
         const popup = document.createElement('div');
         popup.className = 'notification'; // Use your existing notification class
-        popup.innerHTML = `
-            <p>${message}</p>
-            <button class="notification-button" onclick="acknowledgePopup(this)">OK</button>
-        `;
+        popup.innerHTML = `<p>${message}</p>`;
         
         document.body.appendChild(popup);
-    }
-
-    function acknowledgePopup(button) {
-        const popup = button.closest('.notification');
-        popup.remove();
-        showProductivityPopup();
+        
+        // Automatically remove the popup after a few seconds
+        setTimeout(() => {
+            popup.remove();
+        }, 5000); // Popup will disappear after 5 seconds
     }
 
     function startProductivityPopups() {
         productivityPopupInterval = setInterval(() => {
             showProductivityPopup();
-        }, 30000); // Show a pop-up every 30 seconds
+        }, 10000); // Show a pop-up every 30 seconds
     }
 
     function generateAbsurdTask(originalTask) {
@@ -602,10 +734,6 @@
                 updateProgress();
                 saveTasks();
                 
-                const popup = document.createElement('div');
-                popup.className = 'taunting-popup';
-                popup.textContent = "Your tasks are breeding... Productivity intensifies!";
-                document.body.appendChild(popup);
                 
                 setTimeout(() => {
                     popup.classList.add('fade-out');
@@ -642,7 +770,7 @@
             // If in focus mode, add additional absurd tasks
             if (focusMode) {
                 const numNewTasks = Math.floor(Math.random() * 3) + 1;
-                
+                showQuestionPopup()
                 for (let i = 0; i < numNewTasks; i++) {
                     setTimeout(() => {
                         const newAbsurdTask = {
@@ -660,7 +788,7 @@
                         
                         // Show a popup notification
                         const popup = document.createElement('div');
-                        popup.className = 'taunting-popup';
+                        popup.className = 'notificationleft';
                         popup.textContent = `Bonus task unlocked: ${newAbsurdTask.text}`;
                         document.body.appendChild(popup);
                         
@@ -685,8 +813,8 @@
         filteredTasks.forEach(task => {
             const li = document.createElement('li');
             li.className = `task-item ${task.completed ? 'completed' : ''}`;
+            li.setAttribute('data-task-id', task.id);
             
-            // Create priority label text
             const priorityLabel = task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
             
             li.innerHTML = `
@@ -703,7 +831,6 @@
             taskList.appendChild(li);
         });
     }
-
     function toggleComplete(id) {
         if (focusMode) {
             const tauntingMessages = [
@@ -716,7 +843,17 @@
                 "Sorry, the task completion fairy is on vacation.",
                 "Error 404: Task completion not found.",
                 "Your optimism is admirable, but let's be realistic.",
-                "That's cute. Now get back to work!"
+                "That's cute. Now get back to work!",
+                "Oh really? I doubt that's all there is to it.",
+                "Nice try, but I see right through that!",
+                "Are you rushing? That seemed a bit too easy...",
+                "Nope, doesn't look finished to me!",
+                "You can't just wish it away!",
+                "Ah, but you forgot to cross the T's and dot the I's!",
+                "Sorry, the task fairy is currently unavailable.",
+                "Error 403: Completion not authorized.",
+                "Your enthusiasm is noted, but let's be honest.",
+                "That's adorable. Now, back to the grind!"
             ];
 
             const randomMessage = tauntingMessages[Math.floor(Math.random() * tauntingMessages.length)];
@@ -732,7 +869,10 @@
                 setTimeout(() => popup.remove(), 500);
             }, 5000);
 
-            const taskElement = document.querySelector(`[onclick="toggleComplete(${id})"]`).closest('.task-item');
+            const taskElement = document.querySelector(`[data-task-id="${id}"]`);
+            const buttonElement = document.querySelector(`[onclick="toggleComplete(${id})"]`);
+            const taskItem = buttonElement ? buttonElement.closest('.task-item') : taskElement;
+
             if (taskElement) {
                 taskElement.classList.add('shake');
                 setTimeout(() => taskElement.classList.remove('shake'), 500);
@@ -760,14 +900,27 @@
             const tauntingMessages = [
                 "Nice try! These tasks aren't going anywhere.",
                 "Deleting won't make it disappear from your to-do list!",
-                "Nope! Focus mode means facing your tasks, not erasing them.",
-                "Sorry, the delete button is on vacation during focus mode.",
+                "Nope! Useless mode only allow facing your tasks, not erasing them.",
+                "Sorry, the delete button is on vacation during Useless mode.",
                 "Trying to delete your responsibilities? Not today!",
-                "Task deletion denied. The focus gods have spoken.",
-                "Error 403: Deletion Forbidden in Focus Land.",
+                "Error 403: Deletion Forbidden in Useless Land.",
                 "Your task is like a boomerang - it's not going away!",
-                "Deleting tasks in focus mode? That's not very focused of you.",
-                "Keep calm and carry on... with your tasks intact!"
+                "Keep calm and carry on... with your tasks intact!",
+                "Nice try, but your tasks are here to stay!",
+                "Deleting won't help; they’ll just pop back up!",
+                "Oops! Useless mode only allows for facing the music.",
+                "Sorry, but the delete option is out of service right now.",
+                "No shortcuts allowed! Responsibilities require attention!",
+                "Access Denied: Deletion not permitted in Useless mode.",
+                "Your tasks are like shadows - they follow you everywhere!",
+                "Keep calm and tackle those tasks head-on!",
+                "Nice attempt, but your to-do list is on a permanent vacation.",
+                "Sorry, but your responsibilities have a no-delete policy!",
+                "Error 404: Task Deletion Not Found!",
+                "Attempting to erase your duties? Not in this universe!",
+                "Your tasks are like stubborn stains - they won't budge!",
+                "Keep your chin up; those tasks are here for the long haul!",
+                "No escape route available! Face your tasks bravely!"
             ];
 
             const randomMessage = tauntingMessages[Math.floor(Math.random() * tauntingMessages.length)];
@@ -775,7 +928,9 @@
             const popup = document.createElement('div');
             popup.className = 'taunting-popup';
             popup.textContent = randomMessage;
-
+            popup.style.position = 'fixed';
+            popup.style.top = 'calc(50% + 150px)'; // 50 pixels down from the center
+            popup.style.left = '50%';
             document.body.appendChild(popup);
 
             setTimeout(() => {
@@ -817,7 +972,7 @@
         const hours = Math.floor(diff / 3600000);
         const minutes = Math.floor((diff % 3600000) / 60000);
         const seconds = Math.floor((diff % 60000) / 1000);
-        focusTimerElement.textContent = `Focus Time: ${hours}h ${minutes}m ${seconds}s`;
+        focusTimerElement.textContent = `Time Wasted in USELESS To-Do List: ${hours}h ${minutes}m ${seconds}s`;
 
         if (Math.random() < 0.01) {
             showDistraction();
@@ -863,38 +1018,23 @@
 
 
 
-function createTaskElement(text, priority) {
-    const taskItem = document.createElement('div');
-    taskItem.className = 'task-item';
-    taskItem.innerHTML = `
-        <input type="checkbox" class="task-checkbox"focus
-
-        <span class="task-text">${text}</span>
-        <span class="priority-badge priority-${priority}">${priority}</span>
-        <div class="task-actions">
-            <button class="delete-button">Delete</button>
-        </div>
-    `;
-    return taskItem;
-}
-
 function toggleFocusMode() {
     focusMode = !focusMode;
     if (focusMode) {
         document.body.classList.add('focus-mode');
-        focusModeButton.textContent = 'Exit Focus Mode';
+        startProductivityPopups();
+        focusModeButton.textContent = 'Exit Useless Mode';
         focusModeButton.style.backgroundColor = '#64ffda';
         focusModeButton.style.color = '#0a192f';
         focusStartTime = new Date();
         focusTimer = setInterval(updateFocusTimer, 1000);
         startDistractionChecks(); // Start showing distractions
-        startProductivityPopups();
         startRandomDuplication();
         // Show initial message
-        messageElement.textContent = "Focus Mode Activated - Stay Focused!";
+        messageElement.textContent = "Useless Mode Activated - Stay Useless!";
     } else {
         document.body.classList.remove('focus-mode');
-        focusModeButton.textContent = 'Enter Focus Mode';
+        focusModeButton.textContent = 'Enter Useless Mode';
         focusModeButton.style.backgroundColor = '';
         focusModeButton.style.color = '';
         clearInterval(focusTimer);
@@ -906,7 +1046,6 @@ function toggleFocusMode() {
       }
     }
 
-  
     function handleTaskActions(e) {
         const target = e.target;
         const taskItem = target.closest('.task-item');
