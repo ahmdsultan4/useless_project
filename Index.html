@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Self-Destructive To-Do List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .task-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .task-list li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .task-description {
+        font-size: 18px;
+      }
+      
+      .task-completed {
+        text-decoration: line-through;
+        color: #999;
+      }
+      
+      .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 10px;
+        position: relative;
+      }
+      
+      .progress-bar-inner {
+        height: 100%;
+        background-color: #4CAF50;
+        width: 0%;
+        transition: width 0.5s;
+      }
+      
+      .progress-percentage {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+      }
+      
+      .add-task-container {
+        margin-top: 20px;
+      }
+      
+      .add-task-input {
+        width: 50%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+      }
+      
+      .add-task-button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .add-task-button:hover {
+        background-color: #3e8e41;
+      }
+      
+      .toggle-button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      
+      .toggle-button.completed {
+        background-color: #4CAF50;
+        color: white;
+      }
+      
+      .toggle-button.not-completed {
+        background-color: #f44336;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Self-Destructive To-Do List</h1>
+      <button onclick="addRandomTask()">Add Random Task</button>
+      <div class="add-task-container">
+        <input id="custom-task-input" class="add-task-input" type="text" placeholder="Enter a custom task">
+        <button class="add-task-button" onclick="addCustomTask(document.getElementById('custom-task-input').value)">Add Custom Task</button>
+      </div>
+      <ul id="task-list" class="task-list"></ul>
+      <div class="progress-bar">
+        <div id="progress-bar-inner" class="progress-bar-inner"></div>
+        <div id="progress-percentage" class="progress-percentage">0%</div>
+      </div>
+    </div>
+    
+    <script>
+      function updateTaskList() {
+        google.script.run.withSuccessHandler(function(tasks) {
+          const taskListElement = document.getElementById('task-list');
+          taskListElement.innerHTML = '';
+          
+          tasks.forEach(task => {
+            const taskElement = document.createElement('li');
+            taskElement.innerHTML = `
+              <span class="task-description ${task.completed === 'Yes' ? 'task-completed' : ''}">
+                ${task.description}
+              </span>
+              <button class="toggle-button ${task.completed === 'Yes' ? 'completed' : 'not-completed'}" onclick="toggleTaskCompletion(${task.id})">
+                ${task.completed === 'Yes' ? 'Completed' : 'Not Completed'}
+              </button>
+            `;
+            taskListElement.appendChild(taskElement);
+          });
+        }).getTasks ();
+      }
+      
+      function addRandomTask() {
+        google.script.run.addRandomTask();
+        updateTaskList();
+      }
+      
+      function addCustomTask(taskDescription) {
+        google.script.run.addCustomTask(taskDescription);
+        updateTaskList();
+        document.getElementById('custom-task-input').value = ''; // Clear input field
+      }
+      
+      function toggleTaskCompletion(taskId) {
+        google.script.run.toggleTaskCompletion(taskId);
+        updateTaskList();
+      }
+      
+      function updateProgressBar() {
+        google.script.run.withSuccessHandler(function(progress) {
+          const progressBarInnerElement = document.getElementById('progress-bar-inner');
+          const progressPercentageElement = document.getElementById('progress-percentage');
+          progressBarInnerElement.style.width = `${progress}%`;
+          progressPercentageElement.textContent = `${progress}%`;
+        }).updateProgressBar();
+      }
+      
+      updateTaskList();
+      updateProgressBar();
+      
+      setInterval(updateProgressBar, 1000); // Update progress bar every second
+    </script>
+  </body>
+</html>
