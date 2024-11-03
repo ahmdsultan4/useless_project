@@ -49,6 +49,13 @@ Ready to dive into the world of task management and procrastination? Follow thes
 
 Or just drag and drop it into your browser like a tech-savvy magician!
 
+#### Alternatively, embrace the cloud chaos: If you're feeling extra adventurous (or just too lazy to clone), check out our Google Apps Script version:
+
+https://script.google.com/macros/s/AKfycbxcQuj0MmLoKQ2N25wiZtLsJi6RvtYYVHvfhIntJzoGkPSKNfd15J2ztwr3r2WE5w8mXg/exec
+
+Warning: Clicking this link may result in sudden bursts of productivity... followed by immediate disappointment!
+
+
 ## Usage
 - Enter a task in the input field. Try to keep it realistic (or absurdly unrealistic, we don’t judge).
 - Select the priority level from the dropdown. Remember, “Low Priority” is just code for “I’ll do this when I feel like it.”
@@ -67,4 +74,4 @@ We love contributions! If you have suggestions for improvements, additional feat
 ## Contact
 For any inquiries, feedback, or just to share your favorite procrastination techniques, please reach out to sultan@pg.cusat.ac.in. We’d love to hear from you!
 
-##Now go forth, embrace your tasks, and remember: if you can’t be productive, at least be entertained!
+## Now go forth, embrace your tasks, and remember: if you can’t be productive, at least be entertained!
