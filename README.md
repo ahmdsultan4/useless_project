@@ -68,7 +68,7 @@ python ecobuild.py
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[Click here to see wandering video](https://github.com/ahmdsultan4/useless_project/blob/f2d318ce460baae03092072caba1ef91426234f5/VID-20250809-WA0135.mp4)  
 *Shows current wandering and water-drinking behavior.*
 
 ## Team Contributions
