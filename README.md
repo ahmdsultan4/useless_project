@@ -43,19 +43,11 @@ python ecobuild.py
 
 ### Project Documentation
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot here)
-*Randomly generated land and water map.*
+# Screenshots
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/ahmdsultan4/useless_project/blob/2a37bf08eeed0fa3c25c7a25f568a985de5c5eb2/IMG-20250809-WA0134.jpg" />
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/ahmdsultan4/useless_project/blob/2a37bf08eeed0fa3c25c7a25f568a985de5c5eb2/IMG-20250809-WA0133.jpg" />
 
-![Screenshot2](Add screenshot here)
-*Creatures wandering the terrain.*
-
-![Screenshot3](Add screenshot here)
-*Vegetation spawning on land.*
-
-# Diagrams
-![Workflow](Add diagram here)
-*Workflow showing map generation, entity spawning, and AI decision-making.*
+*Randomly generated land and water map and creatures wandering the terrain.*
 
 ## Project Status
 **Currently implemented:**
@@ -76,7 +68,7 @@ python ecobuild.py
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[Click here to see wandering video](https://github.com/ahmdsultan4/useless_project/blob/f2d318ce460baae03092072caba1ef91426234f5/VID-20250809-WA0135.mp4)  
 *Shows current wandering and water-drinking behavior.*
 
 ## Team Contributions
